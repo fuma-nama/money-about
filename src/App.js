@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Banner from "./page/Banner";
+import Introduce from "./page/Introduce";
+import {Box} from "@chakra-ui/react";
+import Clients from "./page/Clients";
+import Skills from "./page/Skills";
+import Projects from "./page/Projects";
+import {Contact} from "./page/Contact";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Banner/>
+            <Box px={{base: 10, lg: 40}} py={24}>
+                <Introduce/>
+            </Box>
+            <Clients />
+            <Skills />
+            <Projects />
+            <Contact />
+        </>
+
+    );
 }
 
 export default App;
