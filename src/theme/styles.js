@@ -1,4 +1,3 @@
-import { mode } from "@chakra-ui/theme-tools";
 export const globalStyles = {
   colors: {
     brand: {
@@ -79,10 +78,10 @@ export const globalStyles = {
     },
   },
   styles: {
-    global: (props) => ({
+    global: () => ({
       body: {
         overflowX: "hidden",
-        bg: mode("secondaryGray.300", "navy.900")(props),
+        bg: "navy.900",
         fontFamily: "DM Sans",
         letterSpacing: "-0.5px",
       },
@@ -100,10 +99,7 @@ export const globalStyles = {
       "::-webkit-scrollbar-thumb": {
         width: "9px",
         borderRadius: "8px",
-        backgroundColor: mode(
-          `rgba(0, 0,0, 0.2)`,
-          `rgba(255, 255,255, 0.1)`
-        )(props),
+        backgroundColor: `rgba(255, 255,255, 0.1)`,
       },
     }),
   },

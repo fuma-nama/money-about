@@ -1,4 +1,4 @@
-import {Box, Button, Heading, HStack, Image, Link, Text} from "@chakra-ui/react";
+import {Box, Button, Heading, HStack, Image, Text} from "@chakra-ui/react";
 //assets
 import banner from "assets/img/Banner.jpg";
 import anya from "assets/img/anya.png";
