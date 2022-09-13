@@ -5,6 +5,9 @@ import anya from "assets/img/anya.png";
 import AnchorLink from "react-anchor-link-smooth-scroll-v2";
 
 export default function Banner() {
+    const startAt = new Date("2011-1-1")
+    const now = new Date(Date.now())
+
     return <HStack
         position="relative"
         bgImg={banner}
@@ -22,7 +25,7 @@ export default function Banner() {
                 I am MONEY
             </Heading>
             <Text fontSize="25px">
-                I am a Full-Stack Engineer who has been coding for 12 years
+                I am a Full-Stack Engineer who has been coding for {now.getFullYear() - startAt.getFullYear()} years
             </Text>
             <AnchorLink href='#contact'>
                 <Button mt={7} variant="brand" size="lg">Contact Me</Button>

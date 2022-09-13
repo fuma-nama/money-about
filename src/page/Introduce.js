@@ -3,11 +3,14 @@ import GradientTitle from "../component/GradientTitle";
 import yeecord from "assets/img/screen/yeecord.png"
 
 export default function Introduce() {
+    const startAt = new Date("2011-1-1")
+    const now = new Date(Date.now())
+
     return <Flex gap={5} direction={{base: "column", "2xl": "row"}}>
         <Flex direction="column">
-            <GradientTitle mb={{base: 5, xl: 10}}>12 Years of Coding Experience</GradientTitle>
+            <GradientTitle mb={{base: 5, xl: 10}}>{now.getFullYear() - startAt.getFullYear()} Years of Coding Experience</GradientTitle>
             <Text fontSize={25}>
-                I started to learn programming since I was 9
+                I started to learn programming since I was 11
                 <br/>
                 I have many experience to frontend and frameworks development
             </Text>
