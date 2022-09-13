@@ -1,8 +1,16 @@
-import {Box, Button, Center, Heading, Image, Link, Text} from "@chakra-ui/react";
+import {Box, Button, Center, chakra, Heading, Image, Link, shouldForwardProp, Text} from "@chakra-ui/react";
 import bgImg from "assets/img/Contact-Bg.jpg"
 import {FaDiscord} from "react-icons/fa";
 import anya from "assets/img/stickers/anya-2.png"
 import {discord} from "../varables";
+import {isValidMotionProp, motion} from "framer-motion";
+
+const Anime = chakra(motion.div, {
+    /**
+     * Allow motion props and non-Chakra props to be forwarded.
+     */
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+});
 
 export function Contact() {
     const shadow = {
@@ -23,8 +31,23 @@ export function Contact() {
                     <Button mt={5} leftIcon={<FaDiscord width={40}/>} size="lg" variant="brand">My Discord</Button>
                 </Link>
             </Box>
-            <Image position="absolute" maxW="none" w="30rem" src={anya} top={0} mt="-3rem"
-                   right={{base: 10, lg: "5rem"}}/>
+            <Anime
+                top={0} right={{base: 10, lg: "5rem"}}
+                position="absolute" maxW="none" w="30rem"
+                animate={{
+                    y: [20, -10, 20]
+                }}
+                transition={{
+                    duration: 1,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop",
+                }}>
+                <Image w='full' src={anya} mt="-3rem"
+
+                />
+            </Anime>
+
         </Center>
     </section>
 }

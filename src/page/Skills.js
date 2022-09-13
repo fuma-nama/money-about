@@ -1,22 +1,31 @@
-import {Box, Center, Heading, Image, SimpleGrid, Text, VStack} from "@chakra-ui/react";
+import {Box, Center, Collapse, Fade, Heading, Image, SimpleGrid, SlideFade, Text, VStack} from "@chakra-ui/react";
 import bgImg from "assets/img/Skills-Bg.jpg"
 import {SiJavascript, SiKotlin, SiPython, SiTypescript} from "react-icons/si";
+import {useInView} from "framer-motion";
+import {useRef} from "react";
 
 export default function Skills() {
+    const ref = useRef()
+    const inView = useInView(ref)
+
     const shadow = {
         textShadow: "0px 0px 8px black"
     }
 
     return <VStack bgImg={bgImg} bgSize="cover" py="20rem" textAlign="center" px={10}>
-        <Box
-            rounded="xl"
-            backdropFilter={{base: "none", md: "blur(20px)"}}
-            bg={{md: "rgba(0, 0, 0, 0.3)"}}
-            p={{md: 10}}>
-            <Heading as="h1" fontSize={45} {...shadow}>Skills</Heading>
-            <Text fontSize={20} {...shadow}>All the Languages I had learnt during many years</Text>
-            <SkillsGrid />
-        </Box>
+            <Box
+                rounded="xl"
+                backdropFilter={{base: "none", md: "blur(20px)"}}
+                bg={{md: "rgba(0, 0, 0, 0.3)"}}
+                p={{md: 10}}>
+                <SlideFade ref={ref} in={inView}>
+
+                <Heading as="h1" fontSize={45} {...shadow}>Skills</Heading>
+                <Text fontSize={20} {...shadow}>All the Languages I had learnt during many years</Text>
+                <SkillsGrid />
+                </SlideFade>
+
+            </Box>
     </VStack>
 }
 

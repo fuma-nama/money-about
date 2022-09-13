@@ -1,4 +1,4 @@
-import {Box, Flex, HStack, Image, SimpleGrid, Text} from "@chakra-ui/react";
+import {Box, HStack, Image, SimpleGrid, SlideFade, Text} from "@chakra-ui/react";
 import GradientTitle from "../component/GradientTitle";
 //assets
 import kanna_fly from "assets/img/stickers/kanna-fly.png"
@@ -7,7 +7,13 @@ import kanna_fly from "assets/img/stickers/kanna-fly.png"
 import wave from "assets/img/Wave.svg"
 import yeecord from "assets/img/clients/yeecord.png"
 
+import {useRef} from "react";
+import {useInView} from "framer-motion";
+
 export default function Clients() {
+    const ref = useRef()
+    const inView = useInView(ref)
+
     return <>
         <Image src={wave} w="full" h={{base: "10rem", md: "20rem"}}/>
         <HStack
@@ -17,12 +23,13 @@ export default function Clients() {
             gap={5}
         >
             <Image w="30rem" display={{base: "none", xl: "block"}} src={kanna_fly}/>
-            <Box gap={10}>
-                <GradientTitle>My Clients</GradientTitle>
-                <Text fontSize={25}>Those nice Companies, Teams, Communities and Peoples I had worked for</Text>
-                <ClientsGrid mt={10}/>
-            </Box>
-
+            <SlideFade ref={ref} in={inView} offsetY='100px'>
+                <Box gap={10}>
+                    <GradientTitle>My Clients</GradientTitle>
+                    <Text fontSize={25}>Those nice Companies, Teams, Communities and Peoples I had worked for</Text>
+                    <ClientsGrid mt={10}/>
+                </Box>
+            </SlideFade>
         </HStack>
     </>
 }

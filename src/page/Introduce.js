@@ -1,23 +1,31 @@
-import {Box, Flex, Image, SimpleGrid, Text} from "@chakra-ui/react";
+import {Box, Flex, Image, SimpleGrid, SlideFade, Text} from "@chakra-ui/react";
 import GradientTitle from "../component/GradientTitle";
 import yeecord from "assets/img/screen/yeecord.png"
+import {startAt} from "../varables";
+import {useRef} from "react";
+import {useInView} from "framer-motion";
 
 export default function Introduce() {
-    const startAt = new Date("2011-1-1")
     const now = new Date(Date.now())
+    const ref = useRef()
+    const inView = useInView(ref)
 
-    return <Flex gap={5} direction={{base: "column", "2xl": "row"}}>
-        <Flex direction="column">
-            <GradientTitle mb={{base: 5, xl: 10}}>{now.getFullYear() - startAt.getFullYear()} Years of Coding Experience</GradientTitle>
-            <Text fontSize={25}>
-                I started to learn programming since I was 11
-                <br/>
-                I have many experience to frontend and frameworks development
-            </Text>
-            <Tags mt={{base: 5, "2xl": "5rem"}} />
+    return <SlideFade ref={ref} in={inView} offsetY='100px'>
+        <Flex gap={5} direction={{base: "column", "2xl": "row"}}>
+
+            <Flex direction="column">
+                <GradientTitle mb={{base: 5, xl: 10}}>{now.getFullYear() - startAt.getFullYear()} Years of Coding Experience</GradientTitle>
+                <Text fontSize={25}>
+                    I started to learn programming since I was 11
+                    <br/>
+                    I have many experience to frontend and frameworks development
+                </Text>
+                <Tags mt={{base: 5, "2xl": "5rem"}} />
+            </Flex>
+            <Image w={{base: "full", "2xl": "40rem"}} flex={1} src={yeecord} rounded="xl" objectFit="contain"/>
         </Flex>
-        <Image w={{base: "full", "2xl": "40rem"}} flex={1} src={yeecord} rounded="xl" objectFit="contain"/>
-    </Flex>
+    </SlideFade>
+
 }
 
 function Tags(props) {

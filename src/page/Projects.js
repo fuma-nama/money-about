@@ -1,4 +1,4 @@
-import {Box, Button, Flex, Heading, Image, Link, SimpleGrid, Text, VStack} from "@chakra-ui/react";
+import {Box, Button, Flex, Heading, Image, Link, SimpleGrid, SlideFade, Text, VStack} from "@chakra-ui/react";
 import GradientTitle from "../component/GradientTitle";
 import {BsGithub} from "react-icons/bs";
 //assets
@@ -7,8 +7,13 @@ import city from "assets/img/City.png";
 import yeecord_home from "assets/img/projects/yeecord.png"
 import yeecord from "assets/img/screen/yeecord.png"
 import {github} from "../varables";
+import {useRef} from "react";
+import {useInView} from "framer-motion";
 
 export default function Projects() {
+    const ref = useRef()
+    const inView = useInView(ref)
+
     return <Flex direction={{base: "column", "2xl": "row"}} bgGradient="linear(to-b, #2a0544, navy.800)" pb="10rem">
         <Image mt="-16%" src={city} w={{base: "full", "2xl": "35rem"}} flex={1} objectFit="contain" />
         <Box align="start" px={{base: 10, md: 20}}>
@@ -22,7 +27,9 @@ export default function Projects() {
                 <Button leftIcon={<BsGithub width={30} />} size="lg" mt={5}>My Github</Button>
             </Link>
 
-            <ProjectsGrid columns={{base: 1, lg: 3}} />
+            <SlideFade ref={ref} in={inView} offsetY='20px'>
+                <ProjectsGrid columns={{base: 1, lg: 3}} />
+            </SlideFade>
         </Box>
     </Flex>
 }
