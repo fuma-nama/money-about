@@ -14,7 +14,7 @@ export default function Introduce() {
         <Flex gap={5} direction={{base: "column", "2xl": "row"}}>
 
             <Flex direction="column">
-                <GradientTitle mb={{base: 5, xl: 10}}>{now.getFullYear() - startAt.getFullYear()} Years of Coding Experience</GradientTitle>
+                <GradientTitle mb={{base: 5, xl: 10}}>{now.getFullYear() - startAt} Years of Coding Experience</GradientTitle>
                 <Text fontSize={25}>
                     I started to learn programming since I was 11
                     <br/>
