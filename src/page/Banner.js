@@ -29,7 +29,7 @@ export default function Banner() {
                     I am MONEY
                 </Heading>
                 <Text fontSize="25px">
-                    I am a Full-Stack Engineer who has been coding for {now.getFullYear() - startAt.getFullYear()} years
+                    I am a Full-Stack Engineer who has been coding for {now.getFullYear() - startAt} years
                 </Text>
                 <AnchorLink href='#contact'>
                     <Button mt={7} variant="brand" size="lg">Contact Me</Button>
